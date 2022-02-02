@@ -1,7 +1,7 @@
 const sendGridMail = require('@sendgrid/mail');
 sendGridMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-function EmailHtml(name, email) {
+function EmailHtml(name, email, message) {
   return `
   <!Doctype html/>
     <html>
@@ -14,7 +14,9 @@ function EmailHtml(name, email) {
       <h2 style="font">Hello ${name} friend</h2>
       <p>we appreciate your effort and we will get back to you shortly on your email :<span style="font-size:1.5rem; font-weight:bold;">${email}</p>
       <p style="font-size:1.7rem; font-weight:bold">we are looking for the best packages available for you</p>
-      s
+      <div>
+        <span style="font-size:1.7rem;> "${message}</span>
+      </div>
      </div>
     </div>
     </body>
@@ -28,7 +30,7 @@ function getMessage(emailParams) {
     from: 'mdre3277@gmail.com',
     subject: 'We have   got your order, you will receive it soon',
     text: `Hey ${emailParams.name}, we have received your Email. We will get back soon`,
-    html: EmailHtml(emailParams.name, emailParams.email),
+    html: EmailHtml(emailParams.name, emailParams.toEmail,emailParams.message),
   };
 }
 
