@@ -27,7 +27,7 @@ function EmailHtml(name, email, message) {
 function getMessage(emailParams) {
   return {
     to: emailParams.toEmail,
-    from: 'mdre3277@gmail.com',
+    from: 'Your_EMAIL_ID',
     subject: 'We have   got your order, you will receive it soon',
     text: `Hey ${emailParams.name}, we have received your Email. We will get back soon`,
     html: EmailHtml(emailParams.name, emailParams.toEmail,emailParams.message),
